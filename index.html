@@ -3,46 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Astra OS — Product Team Command Center</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Chewawa is a polished project management command center for product teams." />
+  <title>Chewawa - Product Team Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="app-shell" aria-label="Astra project management platform">
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <div class="app-shell" aria-label="Chewawa project management platform">
     <aside class="sidebar" id="sidebar">
       <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">☰</button>
-      <div class="brand"><span class="brand-mark">✦</span><span>Astra</span></div>
+      <div class="brand">
+        <span class="brand-mark">🐶</span>
+        <span class="brand-copy"><strong>Chewawa</strong><small>Comedy Ops</small></span>
+      </div>
+
       <button class="quick-add" id="quickAdd">+ Create Task <kbd>C</kbd></button>
+
       <nav class="sidebar-nav" aria-label="Workspace navigation">
-        <a class="active" href="#"><span>⌘</span> Command Palette</a>
-        <a href="#"><span>📁</span> Projects</a>
-        <a href="#"><span>★</span> Favorites</a>
-        <a href="#"><span>👥</span> Teams</a>
-        <a href="#"><span>🕘</span> Recent</a>
-        <a href="#"><span>📄</span> Documents</a>
-        <a href="#"><span>◎</span> Views</a>
-        <a href="#"><span>⚙</span> Settings</a>
+        <a class="active" href="#"><span>⌘</span><span>Command Palette</span></a>
+        <a href="#"><span>📁</span><span>Projects</span></a>
+        <a href="#"><span>★</span><span>Favorites</span></a>
+        <a href="#"><span>👥</span><span>Teams</span></a>
+        <a href="#"><span>🕘</span><span>Recent</span></a>
+        <a href="#"><span>📄</span><span>Documents</span></a>
+        <a href="#"><span>◎</span><span>Views</span></a>
+        <a href="#"><span>⚙</span><span>Settings</span></a>
       </nav>
+
       <section class="sidebar-card">
-        <p>Team capacity</p>
-        <strong>82%</strong>
+        <div>
+          <p>Team capacity</p>
+          <strong>82%</strong>
+        </div>
         <div class="meter"><span style="width:82%"></span></div>
+        <small>2 cold opens stuck, 18 joke points left</small>
       </section>
     </aside>
 
     <main class="workspace">
       <header class="topbar">
-        <div>
-          <p class="eyebrow">Product OS / Aurora Launch</p>
-          <h1>Project Management, reimagined</h1>
+        <div class="hero-copy">
+          <p class="eyebrow">Sitcom Sprint <span class="live-pill">Drag tasks now</span></p>
+          <h1>Chewawa keeps the product team from becoming the B plot.</h1>
+          <p class="hero-subtitle">One task board for workplace chaos, apartment drama, municipal waffle emergencies, and every meeting that should have been a cold open.</p>
         </div>
         <div class="topbar-actions">
           <button class="ghost" id="openSearch">Search <kbd>/</kbd></button>
           <button class="primary" id="openPalette">Command <kbd>⌘K</kbd></button>
         </div>
       </header>
+
+      <section class="metrics-grid" aria-label="Project health metrics">
+        <article><span>Laugh velocity</span><strong>42</strong><em>bits shipped</em></article>
+        <article><span>Cold opens</span><strong>7</strong><em>ready for review</em></article>
+        <article><span>Chaos level</span><strong>2.8</strong><em>out of 10, somehow</em></article>
+        <article><span>At risk</span><strong>3</strong><em>surprise parties</em></article>
+      </section>
 
       <nav class="tabs" aria-label="Project views">
         <button class="tab active" data-view="backlog">Prioritized Backlog</button>
@@ -53,10 +74,10 @@
         <button class="tab" data-view="mine">My Items</button>
       </nav>
 
-      <section class="insight-strip" aria-label="Research-backed product choices">
-        <article><strong>One data model</strong><span>Table, board, roadmap, bugs, and my work are synchronized views.</span></article>
-        <article><strong>Fewer clicks</strong><span>Inline edits, hover previews, and the right-side task drawer preserve context.</span></article>
-        <article><strong>Scale ready</strong><span>Independent column scrolling and virtualized-list affordances keep large boards calm.</span></article>
+      <section class="insight-strip" aria-label="Product choices">
+        <article><strong>One data model</strong><span>Every sitcom emergency updates every view at once.</span></article>
+        <article><strong>Fewer clicks</strong><span>Open the drawer, fix the mess, get back before the laugh track notices.</span></article>
+        <article><strong>Drag it around</strong><span>Move tasks between statuses or priority groups without opening a menu.</span></article>
       </section>
 
       <section class="view active" id="backlog">
@@ -68,13 +89,13 @@
       </section>
 
       <section class="view" id="board">
-        <div class="view-header"><h2>Status Board</h2><div class="filter-pill">WIP limits visible before overload</div></div>
+        <div class="view-header"><h2>Status Board</h2><div class="filter-pill">Drop cards into any status</div></div>
         <div class="kanban" id="kanban"></div>
       </section>
 
       <section class="view" id="iteration">
         <div class="sprint-summary">
-          <article><span>Sprint</span><strong>Nova 24</strong></article><article><span>Completion</span><strong>64%</strong></article><article><span>Velocity</span><strong>42 pts</strong></article><article><span>Remaining</span><strong>18 pts</strong></article><article><span>Blocked</span><strong>2</strong></article><article><span>Overdue</span><strong>1</strong></article>
+          <article><span>Sprint</span><strong>Season 4</strong></article><article><span>Completion</span><strong>64%</strong></article><article><span>Velocity</span><strong>42 pts</strong></article><article><span>Remaining</span><strong>18 pts</strong></article><article><span>Blocked</span><strong>2</strong></article><article><span>Overdue</span><strong>1</strong></article>
         </div>
         <div class="chart-card"><h3>Burn down</h3><div class="burndown"><span></span></div></div>
         <div class="kanban compact" id="iterationBoard"></div>
@@ -91,6 +112,7 @@
       </section>
 
       <section class="view" id="mine">
+        <div class="view-header"><h2>My Items</h2><div class="filter-pill">Quick complete, no bottle episode required</div></div>
         <div class="my-grid" id="myItems"></div>
       </section>
     </main>
@@ -103,7 +125,7 @@
 
   <div class="palette" id="palette" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="palette-box">
-      <input id="paletteInput" placeholder="Type a command, task, person, or filter…" aria-label="Command palette input" />
+      <input id="paletteInput" placeholder="Type a command, task, person, or filter..." aria-label="Command palette input" />
       <div class="command-list" id="commandList"></div>
     </div>
   </div>
