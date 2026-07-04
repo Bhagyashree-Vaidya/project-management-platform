@@ -10,7 +10,7 @@ Chewawa Project Management Platform is a project management platform hosted with
 
 Open the GitHub Pages site:
 
-<https://bhagyashree-vaidya.github.io/Chewawa-project-management-platform/>
+<https://bhagyashree-vaidya.github.io/project-management-platform/>
 
 
 
