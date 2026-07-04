@@ -1,20 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task List</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Astra OS is a polished project management command center for product teams." />
+  <title>Astra OS — Product Team Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Task List</h1>
-        <div class="task-input">
-            <input type="text" id="task" placeholder="Enter a new task...">
-            <button id="addTask">Add Task</button>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <div class="app-shell" aria-label="Astra project management platform">
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">☰</button>
+      <div class="brand">
+        <span class="brand-mark">✦</span>
+        <span class="brand-copy"><strong>Astra</strong><small>Product OS</small></span>
+      </div>
+
+      <button class="quick-add" id="quickAdd">+ Create Task <kbd>C</kbd></button>
+
+      <nav class="sidebar-nav" aria-label="Workspace navigation">
+        <a class="active" href="#"><span>⌘</span><span>Command Palette</span></a>
+        <a href="#"><span>📁</span><span>Projects</span></a>
+        <a href="#"><span>★</span><span>Favorites</span></a>
+        <a href="#"><span>👥</span><span>Teams</span></a>
+        <a href="#"><span>🕘</span><span>Recent</span></a>
+        <a href="#"><span>📄</span><span>Documents</span></a>
+        <a href="#"><span>◎</span><span>Views</span></a>
+        <a href="#"><span>⚙</span><span>Settings</span></a>
+      </nav>
+
+      <section class="sidebar-card">
+        <div>
+          <p>Team capacity</p>
+          <strong>82%</strong>
         </div>
-        <ul id="taskList"></ul>
+        <div class="meter"><span style="width:82%"></span></div>
+        <small>2 blockers · 18 pts remaining</small>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="hero-copy">
+          <p class="eyebrow">Aurora Launch <span class="live-pill">New V2 UI</span></p>
+          <h1>The calm operating system for product teams.</h1>
+          <p class="hero-subtitle">One source of truth across backlog, board, sprint, roadmap, bugs, and personal work — designed to feel fast on GitHub Pages the moment it deploys.</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost" id="openSearch">Search <kbd>/</kbd></button>
+          <button class="primary" id="openPalette">Command <kbd>⌘K</kbd></button>
+        </div>
+      </header>
+
+      <section class="metrics-grid" aria-label="Project health metrics">
+        <article><span>Completion</span><strong>64%</strong><em>+12% this sprint</em></article>
+        <article><span>Velocity</span><strong>42</strong><em>story points</em></article>
+        <article><span>Cycle time</span><strong>2.8d</strong><em>target under 3d</em></article>
+        <article><span>At risk</span><strong>3</strong><em>dependency alerts</em></article>
+      </section>
+
+      <nav class="tabs" aria-label="Project views">
+        <button class="tab active" data-view="backlog">Prioritized Backlog</button>
+        <button class="tab" data-view="board">Status Board</button>
+        <button class="tab" data-view="iteration">Current Iteration</button>
+        <button class="tab" data-view="roadmap">Roadmap</button>
+        <button class="tab" data-view="bugs">Bugs</button>
+        <button class="tab" data-view="mine">My Items</button>
+      </nav>
+
+      <section class="insight-strip" aria-label="Research-backed product choices">
+        <article><strong>One data model</strong><span>Every tab is a different lens over the same tasks, so updates stay synchronized.</span></article>
+        <article><strong>Low interruption</strong><span>Open details in a drawer, edit inline, and keep keyboard context intact.</span></article>
+        <article><strong>Scale calm</strong><span>Dense information is progressively disclosed with independent board scrolling.</span></article>
+      </section>
+
+      <section class="view active" id="backlog">
+        <div class="view-header"><h2>Prioritized Backlog</h2><div class="filter-pill">assignee:me OR priority:p0</div></div>
+        <div class="backlog-table" role="table" aria-label="Prioritized backlog">
+          <div class="table-row table-head" role="row"><span>Title</span><span>Status</span><span>Priority</span><span>Points</span><span>Assignee</span><span>Sprint</span><span>Labels</span><span>Due</span></div>
+          <div id="backlogRows"></div>
+        </div>
+      </section>
+
+      <section class="view" id="board">
+        <div class="view-header"><h2>Status Board</h2><div class="filter-pill">Independent columns · sticky WIP headers</div></div>
+        <div class="kanban" id="kanban"></div>
+      </section>
+
+      <section class="view" id="iteration">
+        <div class="sprint-summary">
+          <article><span>Sprint</span><strong>Nova 24</strong></article><article><span>Completion</span><strong>64%</strong></article><article><span>Velocity</span><strong>42 pts</strong></article><article><span>Remaining</span><strong>18 pts</strong></article><article><span>Blocked</span><strong>2</strong></article><article><span>Overdue</span><strong>1</strong></article>
+        </div>
+        <div class="chart-card"><h3>Burn down</h3><div class="burndown"><span></span></div></div>
+        <div class="kanban compact" id="iterationBoard"></div>
+      </section>
+
+      <section class="view" id="roadmap">
+        <div class="view-header"><h2>Roadmap</h2><div class="segmented"><button>Week</button><button class="active">Month</button><button>Quarter</button><button>Year</button></div></div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <section class="view" id="bugs">
+        <div class="view-header"><h2>Bug triage</h2><div class="filter-pill">severity:critical OR blocked:true</div></div>
+        <div class="bug-list" id="bugList"></div>
+      </section>
+
+      <section class="view" id="mine">
+        <div class="view-header"><h2>My Items</h2><div class="filter-pill">Quick complete · grouped by urgency</div></div>
+        <div class="my-grid" id="myItems"></div>
+      </section>
+    </main>
+  </div>
+
+  <aside class="task-drawer" id="taskDrawer" aria-hidden="true" aria-label="Task detail panel">
+    <button class="drawer-close" id="closeDrawer" aria-label="Close task detail">×</button>
+    <div id="drawerContent"></div>
+  </aside>
+
+  <div class="palette" id="palette" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="palette-box">
+      <input id="paletteInput" placeholder="Type a command, task, person, or filter…" aria-label="Command palette input" />
+      <div class="command-list" id="commandList"></div>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
