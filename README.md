@@ -40,3 +40,26 @@ git push --force-with-lease origin work
 ```
 
 If the PR branch has a different name on GitHub, replace `work` with that branch name. After the push finishes, refresh the PR page and confirm the latest commit hash is visible in the Conversation or Commits tab.
+
+## Fixing a refspec push error
+
+If Git says `src refspec ... does not match any`, the branch name does not exist in your local clone. If Git mentions `portfolio-site.git`, you are also in the wrong repository or your remote points to the wrong GitHub project.
+
+Use these commands from the `task-list` repository:
+
+```bash
+git remote set-url origin git@github.com:Bhagyashree-Vaidya/task-list.git
+git switch -c codex/clone-project-management-platform-repository-sy210y
+```
+
+If the branch already exists locally, use this instead of `git switch -c`:
+
+```bash
+git switch codex/clone-project-management-platform-repository-sy210y
+```
+
+Then push the PR branch:
+
+```bash
+git push --force-with-lease origin codex/clone-project-management-platform-repository-sy210y
+```
